@@ -31,7 +31,7 @@ if os.environ.get('RD_JOB_LOGLEVEL') == 'DEBUG':
 def connect():
     config_file = None
 
-    if os.environ.get('RD_CONFIG_ENV') == 'incluster':
+    if os.environ.get('RD_CONFIG_ENV') == 'incluster' or os.path.exists('/etc/rd_k8s_incluster_config'):
         config.load_incluster_config()
         return
 
