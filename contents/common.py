@@ -32,8 +32,8 @@ def connect():
     config_file = None
 
     if os.environ.get('RD_CONFIG_ENV') == 'incluster' or os.path.exists('/etc/rd_k8s_incluster_config'):
-        os.environ[config.SERVICE_HOST_ENV_NAME] = "kubernetes.default.svc"
-        os.environ[config.SERVICE_PORT_ENV_NAME] = "443"
+        os.environ["KUBERNETES_SERVICE_HOST"] = "kubernetes.default.svc"
+        os.environ["KUBERNETES_SERVICE_PORT"] = "443"
         config.load_incluster_config()
         return
 
